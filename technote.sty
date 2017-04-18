@@ -3,6 +3,7 @@
 %% 
 \usepackage{xspace}
 \usepackage{amsmath}
+\usepackage{graphicx}
 
 %% page layout.
 \setlength{\textheight}{8.875in}
@@ -15,37 +16,40 @@
 \setlength{\oddsidemargin}{-.304in}
 \setlength{\evensidemargin}{-.304in}
 
-\providecommand{\department}[1]{\textbf #1}
+\def\department#1{\gdef\@department{#1}} \gdef\@department{}
+
+\newcommand{\logo}[2][]{%
+  \gdef\make@logo{\includegraphics[#1]{#2}}%
+}
+\let\make@logo\relax
 
 %% title
 \def\@maketitle
    {
+   \clearpage
+   \vskip -3em
+   \ifx\make@logo\relax
+   \else
+    \make@logo
+   \fi
    \newpage
-   \null
+   \thispagestyle{empty}
   	\vspace*{-24pt}
    	\begin{center}
-      {\Large \bf \@title \par}
-       \vspace*{24pt}
-      {
-      \lineskip 1em
-      \begin{tabular}[t]{c}
-          \@author \\
-         \vspace*{1pt}\
-      \end{tabular}
-      %%\par
+      {\Large \bf \@title \par}\vspace*{24pt}{
+      	\lineskip 1em
+      	\begin{tabular}[t]{c}
+          	\@author \\
+         	\vspace*{1pt}\
+      	\end{tabular}
       }
       \vskip 1em
       \vspace*{12pt}
    	\end{center}
    }
 
-
 %% define keywords.
 \def\keywords#1{\gdef\@keywords{#1}} \gdef\@keywords{}
-
-%% define department 
-%% TODO - Place in leftmark or rightmark
-\def\department#1{\gdef\@department{#1}} \gdef\@department{}
 
 %% abstract should be 'summary'.
 \def\abstract{
