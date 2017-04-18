@@ -1,0 +1,90 @@
+%% Minimalist style for technical reports.
+%% technote.sty
+%% 
+\usepackage{xspace}
+\usepackage{amsmath}
+
+%% page layout.
+\setlength{\textheight}{8.875in}
+\setlength{\textwidth}{6.875in}
+%%\setlength{\columnsep}{0.3125in}
+\setlength{\topmargin}{0in}
+\setlength{\headheight}{0in}
+\setlength{\headsep}{0in}
+\setlength{\parindent}{0.5pc}
+\setlength{\oddsidemargin}{-.304in}
+\setlength{\evensidemargin}{-.304in}
+
+\providecommand{\department}[1]{\textbf #1}
+
+%% title
+\def\@maketitle
+   {
+   \newpage
+   \null
+  	\vspace*{-24pt}
+   	\begin{center}
+      {\Large \bf \@title \par}
+       \vspace*{24pt}
+      {
+      \lineskip 1em
+      \begin{tabular}[t]{c}
+          \@author \\
+         \vspace*{1pt}\
+      \end{tabular}
+      %%\par
+      }
+      \vskip 1em
+      \vspace*{12pt}
+   	\end{center}
+   }
+
+
+%% define keywords.
+\def\keywords#1{\gdef\@keywords{#1}} \gdef\@keywords{}
+
+%% define department 
+%% TODO - Place in leftmark or rightmark
+\def\department#1{\gdef\@department{#1}} \gdef\@department{}
+
+%% abstract should be 'summary'.
+\def\abstract{
+   \noindent
+   \rule{\linewidth}{0.3pt}
+   \textbf{Summary} \vskip 1em
+   }
+   
+\def\endabstract{
+	\noindent\\
+	\small{ {\textit Key words}: \@keywords} \\
+	\rule{\linewidth}{0.3pt}
+	}
+	
+%% sections
+\renewcommand\section{\@startsection {section}{1}{\z@}%
+           {18\p@ \@plus 6\p@ \@minus 3\p@}%
+           {9\p@ \@plus 6\p@ \@minus 3\p@}%
+           {\normalsize\bfseries\boldmath}}
+           
+\renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
+           {12\p@ \@plus 6\p@ \@minus 3\p@}%
+           {3\p@ \@plus 6\p@ \@minus 3\p@}%
+           {\normalfont\normalsize\itshape}}
+           
+\renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}%
+           {12\p@ \@plus 6\p@ \@minus 3\p@}%
+           {\p@}%
+           {\normalfont\normalsize\itshape}}
+                 
+%% etc. et al.
+\makeatletter
+\DeclareRobustCommand\onedot{\futurelet\@let@token\@onedot}
+\def\@onedot{\ifx\@let@token.\else.\null\fi\xspace}
+\def\eg{\emph{e.g}\onedot} \def\Eg{\emph{E.g}\onedot}
+\def\ie{\emph{i.e}\onedot} \def\Ie{\emph{I.e}\onedot}
+\def\cf{\emph{c.f}\onedot} \def\Cf{\emph{C.f}\onedot}
+\def\etc{\emph{etc}\onedot} \def\vs{\emph{vs}\onedot}
+\def\wrt{w.r.t\onedot} \def\dof{d.o.f\onedot}
+\def\etal{\emph{et al}\onedot}
+\makeatother
+

@@ -1,0 +1,42 @@
+%% example.tex
+%%  An example technical report, using technote.sty
+\documentclass[twocolumn]{article}
+\usepackage{technote}
+\usepackage{lipsum}
+
+
+%% title & author.
+\title{Some technical note}
+\author{Michael Lewis\\
+A. Bank\\
+{\tt\small lewismj@abank.com}
+\and
+A.N. Other\\
+A. Bank\\
+{\tt\small other@abank.com}
+}
+\department{FICC IT}
+\begin{document}
+\maketitle
+
+%% define 'keywords' before abstract.
+\keywords{Graph, Whiz, Bang, LMM, BGM \etc \etal}
+\begin{abstract}
+\lipsum[1-1]
+\end{abstract}
+
+\tableofcontents
+
+\section{First Section}
+	\lipsum[1-2]
+	\subsection{Sub Section}
+		\subsubsection{A sub sub section}
+			\lipsum[1-1]
+	\subsubsection{Another sub sub section}
+		\lipsum[1-1]
+\section{Second Section}
+	\subsection{Sub Section}
+		\subsubsection{Sub Sub Section}
+			\lipsum[1-2]
+			
+\end{document}
