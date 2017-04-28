@@ -4,49 +4,57 @@
 \usepackage{xspace}
 \usepackage{amsmath}
 \usepackage{graphicx}
+\usepackage[color=black,opacity=1.0]{background}
+\backgroundsetup{contents={}}
 
-%% page layout.
-\setlength{\textheight}{8.875in}
-\setlength{\textwidth}{6.875in}
-%%\setlength{\columnsep}{0.3125in}
-\setlength{\topmargin}{0in}
-\setlength{\headheight}{0in}
-\setlength{\headsep}{0in}
-\setlength{\parindent}{0.5pc}
-\setlength{\oddsidemargin}{-.304in}
-\setlength{\evensidemargin}{-.304in}
+\usepackage[total={6.875in,8.875in}]{geometry}
+\setlength{\columnsep}{0.3125in}
 
-\def\department#1{\gdef\@department{#1}} \gdef\@department{}
+%% page layout customisation.
+	%%\setlength{\textheight}{8.875in}
+	%%\setlength{\textwidth}{6.875in}
+	%%\setlength{\columnsep}{0.3125in}
+	%%\setlength{\topmargin}{0in}
+	%%\setlength{\headheight}{0in}
+	%%\setlength{\headsep}{0in}
+	%%\setlength{\parindent}{0.5pc}
+	%%\setlength{\oddsidemargin}{-.304in}
+	%%\setlength{\evensidemargin}{-.304in}
 
+%% place department info on top-right of every page.
+\newcommand{\department}[1]{%
+\SetBgContents{\textit{{\small #1}}}
+\SetBgScale{1}
+\SetBgAngle{0}
+\SetBgPosition{current page.north east}
+\SetBgHshift{-1in}
+\SetBgVshift{-0.5in}
+}
+\let\make@deparment\relax
+
+
+% todo - place logo?
 \newcommand{\logo}[2][]{%
   \gdef\make@logo{\includegraphics[#1]{#2}}%
 }
 \let\make@logo\relax
+%   \vskip -3em
+%   \ifx\make@logo\relax
+%   \else
+%    \make@logo
+%   \fi
+%   
 
-%% title
-\def\@maketitle
-   {
-   \clearpage
-   \vskip -3em
-   \ifx\make@logo\relax
-   \else
-    \make@logo
-   \fi
+
+\def\@maketitle{%
+   \clearpage 
    \newpage
    \thispagestyle{empty}
-  	\vspace*{-24pt}
-   	\begin{center}
-      {\Large \bf \@title \par}\vspace*{24pt}{
-      	\lineskip 1em
-      	\begin{tabular}[t]{c}
-          	\@author \\
-         	\vspace*{1pt}\
-      	\end{tabular}
-      }
-      \vskip 1em
-      \vspace*{12pt}
-   	\end{center}
-   }
+    \vspace*{-24pt}
+   	\begin{flushleft}
+    {\Large \bf \@title\\}\vspace*{12pt}{\@author}
+   	\end{flushleft}
+}
 
 %% define keywords.
 \def\keywords#1{\gdef\@keywords{#1}} \gdef\@keywords{}
