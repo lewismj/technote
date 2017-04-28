@@ -7,8 +7,6 @@
 \usepackage[color=black,opacity=1.0]{background}
 \backgroundsetup{contents={}}
 
-
-
 \usepackage[total={6.875in,8.875in}]{geometry}
 \setlength{\columnsep}{0.3125in}
 \setlength{\footskip}{0.625in}
@@ -64,14 +62,14 @@
 
 %% abstract should be 'summary'.
 \def\abstract{
-   \noindent
+ 	\noindent
    \rule{\linewidth}{0.3pt}
-   \textbf{Summary} \vskip 1em
+   \textbf{Summary} \hskip 1em %%\vskip 1em
    }
    
 \def\endabstract{
 	\noindent\\
-	\small{ {\textit Key words}: \@keywords} \\
+	\small{{\textit Key words}: \@keywords}
 	\rule{\linewidth}{0.3pt}
 	}
 	
